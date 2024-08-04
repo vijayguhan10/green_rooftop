@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Tomato",
+      "price": 100,
+      "alt": "Tomato image",
+      "image": "https://t3.ftcdn.net/jpg/00/34/61/76/240_F_34617669_p9r4GrR83TBEXCZrRny6AaigqPUEPFp5.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cucumber",
+      "price": 60,
+      "alt": "Cucumber image",
+      "image": "https://t3.ftcdn.net/jpg/02/11/84/86/240_F_211848625_VRsDQbV84KPo3xUVUfu28mt7dFx6wycI.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Carrot",
+      "price": 80,
+      "alt": "Carrot image",
+      "image": "https://t4.ftcdn.net/jpg/07/39/15/73/240_F_739157364_gdvJeeizQLywiohyQRhGi5cAgyBlcTTg.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Lettuce",
+      "price": 50,
+      "alt": "Lettuce image",
+      "image": "https://t3.ftcdn.net/jpg/00/84/89/70/240_F_84897056_gLgFBDRfpQmdXDUTQD73f4Dfx649LLVs.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Bell Pepper",
+      "price": 90,
+      "alt": "Bell Pepper image",
+      "image": "https://t4.ftcdn.net/jpg/00/48/10/99/240_F_48109985_JmGZ5YoQ2EQu4GLyLOYzoF9QCWuxa6Lj.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Spinach",
+      "price": 70,
+      "alt": "Spinach image",
+      "image": "https://t3.ftcdn.net/jpg/08/24/47/12/240_F_824471245_EltX0VKbm1gp9CXWtJYx7SmJ8bxJWZGE.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Onion",
+      "price": 50,
+      "alt": "Onion image",
+      "image": "https://t4.ftcdn.net/jpg/02/70/40/39/240_F_270403991_xcNfgSAZ7mn6DKUqJKDnw5DgS0FnLfB8.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Garlic",
+      "price": 40,
+      "alt": "Garlic image",
+      "image": "https://t3.ftcdn.net/jpg/02/16/22/86/240_F_216228631_5dyDk4KXEuHWNPQ7ZrDcArpzg1OtOyrK.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Broccoli",
+      "price": 120,
+      "alt": "Broccoli image",
+      "image": "https://t4.ftcdn.net/jpg/07/82/83/31/240_F_782833108_va4iR1p4dx0SShFtOl32W4uCZLoO5a0H.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Cabbage",
+      "price": 70,
+      "alt": "Cabbage image",
+      "image": "https://t4.ftcdn.net/jpg/07/91/07/71/240_F_791077178_c5ju0L0GG26A8mOT5od94eFIA06WPwQj.jpg"
+    }
+  ]
+}
