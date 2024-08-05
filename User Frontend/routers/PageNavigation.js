@@ -12,7 +12,9 @@ import TrackOrder from "./../ecommerce/Profile/TrackOrder";
 import Payments from "./../Payment/Payments";
 import Sellerdetail from "./../admin/Sellerdetail/Sellerdetail";
 import ViewOrders from "../admin/Sellerdetail/ViewOrders";
-import ViewOrderDetails from './../admin/Sellerdetail/ViewOrderDetails';
+import ViewOrderDetails from "./../admin/Sellerdetail/ViewOrderDetails";
+import Confrimed from "../admin/Sellerdetail/Confrimed";
+import ViewCustomerDetail from "../admin/ViewCustomerDetail";
 const Stack = createNativeStackNavigator();
 
 const PageNavigation = () => {
@@ -77,6 +79,16 @@ const PageNavigation = () => {
         <Stack.Screen
           name="viewcustomers"
           component={ViewOrderDetails}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Confrimed"
+          component={Confrimed}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ViewCustomerDetail"
+          component={ViewCustomerDetail}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

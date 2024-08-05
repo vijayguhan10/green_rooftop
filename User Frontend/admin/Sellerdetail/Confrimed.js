@@ -7,38 +7,44 @@ import {
   ScrollView,
 } from "react-native";
 import Header from "../../../Common/Header";
-import EnteredDetail from "../../data/orders.json";
 import Footer_Admin from "../../../Common/Footer_Admin";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const ViewOrders = () => {
-  let navigation = useNavigation();
+const Confrimed = () => {
+  const route = useRoute(); 
+  const navigation = useNavigation();
+
+  const receivedItems = route.params?.receivedItems || []; 
 
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.border} />
-      <Text style={styles.textview}>ViewOrders</Text>
+      <Text style={styles.textview}>Customer placed the orders</Text>
 
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.display}>
-          {EnteredDetail.map((elem) => (
-            <View key={elem.id} style={styles.orderContainer}>
-              <View style={styles.orderDetails}>
-                <Text style={styles.basicdetails}>Order No : {elem.id}</Text>
-                <Text style={styles.basicdetails}>Area : {elem.area}</Text>
-              </View>
+          {receivedItems.length > 0 ? (
+            receivedItems.map((elem) => (
+              <View key={elem.id} style={styles.orderContainer}>
+                <View style={styles.orderDetails}>
+                  <Text style={styles.basicdetails}>Order No : {elem.id}</Text>
+                  <Text style={styles.basicdetails}>Area : {elem.area}</Text>
+                </View>
 
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={styles.buttondesigning}
-                  onPress={() => navigation.navigate("viewcustomers", { elem })}
-                >
-                  <Text style={styles.button}>Details</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.buttondesigning}
+                    onPress={() => navigation.navigate("ViewCustomerDetail", { elem })}
+                  >
+                    <Text style={styles.button}>Details</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          ))}
+            ))
+          ) : (
+            <Text style={styles.noOrders}>No Orders Available</Text>
+          )}
         </View>
       </ScrollView>
       <Footer_Admin />
@@ -104,6 +110,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
   },
+  noOrders: {
+    fontSize: 18,
+    color: "gray",
+    textAlign: "center",
+    marginTop: 20,
+  },
 });
 
-export default ViewOrders;
+export default Confrimed;

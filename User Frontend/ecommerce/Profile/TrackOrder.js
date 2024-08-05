@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
-import Header from './../../../Common/Footer';
+import Header from './../../../Common/Header';
 import Footer from './../../../Common/Footer';
 
 const TrackOrder = () => {

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-
+import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 const Footer_Admin = () => {
+  const receivedItems = useSelector((state) => state.receivedItems || []);
+
+  console.log("Entire Redux state:", receivedItems);
+  const navigation = useNavigation();
   const [selectedIcon, setSelectedIcon] = useState(null);
 
   const handleIconPress = (iconName) => {
@@ -23,11 +28,15 @@ const Footer_Admin = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
+        // onPress={() => navigation.navigate("Confrimed")}
         style={[
           styles.iconContainer,
           selectedIcon === "motorcycle" && styles.selected,
         ]}
-        onPress={() => handleIconPress("motorcycle")}
+        onPress={() => {
+          handleIconPress("motorcycle"),
+            navigation.navigate("Confrimed", { receivedItems });
+        }}
       >
         <FontAwesome name="motorcycle" size={30} color="brown" />
         <Text style={styles.iconText}>Order Delivery</Text>
@@ -49,10 +58,10 @@ const styles = StyleSheet.create({
   iconContainer: {
     alignItems: "center",
     padding: 10,
-    borderRadius: 10, 
+    borderRadius: 10,
   },
   selected: {
-    backgroundColor: "lightgreen", 
+    backgroundColor: "lightgreen",
   },
   iconText: {
     marginTop: 5,

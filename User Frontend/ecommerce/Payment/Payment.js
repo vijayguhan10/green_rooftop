@@ -7,7 +7,6 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from "react-native";
-import logo from "../assets/logo.png";
 import {
   useFonts,
   PressStart2P_400Regular,
@@ -15,20 +14,16 @@ import {
 import Toast from "react-native-toast-message";
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const toastConfig = {
-  success: (props) => (
-    <View style={{ backgroundColor: "green", padding: 10, borderRadius: 5 }}>
-      <Text style={{ color: "white" }}>{props.text1}</Text>
-    </View>
-  ),
-};
+import { Asset } from "expo-asset";
+import Header from "../../../Common/Header";
 
 const Payment = () => {
+  const logo = Asset.fromModule(require("../assets/logo.png"));
   const [selectedMethod, setSelectedMethod] = useState(null);
   let [fontsLoaded] = useFonts({ PressStart2P_400Regular });
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart || []);
+
   if (!fontsLoaded) {
     return <ActivityIndicator size="large" color="#0000ff" />;
   }
@@ -36,7 +31,13 @@ const Payment = () => {
   const handlePayment = async () => {
     Toast.show({
       type: "success",
-      text1: "Payment processing",
+      position: "top",
+      text1: "Success",
+      text2: "Payment successful!",
+      visibilityTime: 3000,
+      autoHide: true,
+      bottomOffset: 40,
+      style: { backgroundColor: "#4caf50" },
     });
 
     console.log("Cart data before payment:", cart);
@@ -52,7 +53,7 @@ const Payment = () => {
       const newOrder = {
         orderNumber: orderHistory.length + 1,
         cart,
-        totalAmount: cart.reduce((acc, item) => acc + (item.price || 0), 0), // Ensure item.price is valid
+        totalAmount: cart.reduce((acc, item) => acc + (item.price || 0), 0),
       };
       orderHistory.push(newOrder);
       await AsyncStorage.setItem("orderHistory", JSON.stringify(orderHistory));
@@ -66,13 +67,16 @@ const Payment = () => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={logo} />
+      <Header />
       <View style={styles.payment}>
         <Text style={styles.paymentText}>Payment Methods</Text>
       </View>
       <View>
         <TouchableOpacity
-          style={styles.paymentOption}
+          style={[
+            styles.paymentOption,
+            selectedMethod === "cash" && styles.selectedOption,
+          ]}
           onPress={() => setSelectedMethod("cash")}
         >
           <Text style={styles.paymentOptionText}>Cash On Delivery</Text>
@@ -98,6 +102,7 @@ const Payment = () => {
             height: 300,
             width: 300,
             backgroundColor: "white",
+            alignItems: "center", // Center items horizontally
           }}
         >
           <TouchableOpacity
@@ -136,9 +141,9 @@ const Payment = () => {
           <TouchableOpacity style={styles.button} onPress={handlePayment}>
             <Text style={styles.buttonText}>Confirm Payment</Text>
           </TouchableOpacity>
-          <Toast config={toastConfig} />
         </View>
       </View>
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };
@@ -147,6 +152,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    alignItems: "center",
   },
   image: {
     width: 150,

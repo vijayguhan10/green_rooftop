@@ -8,12 +8,22 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import logo from "../../Asset/checklogo.jpg";
-console.log("Image source:", logo);
+import { Asset } from "expo-asset";
+import * as Location from "expo-location";
+import Toast from "react-native-toast-message";
+
+const logo = Asset.fromModule(require("../../Asset/logo.jpg")).uri;
+
 const Login = ({ navigation }) => {
   const colors = ["red", "blue", "green", "orange", "purple"];
   const [colorIndex, setColorIndex] = useState(0);
-  const [Nameset, SetName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [location, setLocation] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
@@ -22,9 +32,91 @@ const Login = ({ navigation }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleLocationRequest = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      Toast.show({
+        type: "error",
+        position: "top",
+        text1: "Error",
+        text2: "Location permission denied.",
+        visibilityTime: 3000,
+        autoHide: true,
+        bottomOffset: 40,
+        style: { backgroundColor: "#f44336" },
+      });
+      return;
+    }
+
+    const { coords } = await Location.getCurrentPositionAsync({});
+    const locationString = `Lat: ${coords.latitude.toFixed(
+      6
+    )}, Lon: ${coords.longitude.toFixed(6)}`;
+    setLocation(locationString);
+    Toast.show({
+      type: "success",
+      position: "top",
+      text1: "Location Accessed",
+      text2: locationString,
+      visibilityTime: 3000,
+      autoHide: true,
+      bottomOffset: 40,
+      style: { backgroundColor: "#4caf50" },
+    });
+  };
+
+  const handleSubmit = () => {
+    setIsSubmitting(true);
+    let newErrors = {};
+    if (!email) newErrors.email = "Email is required.";
+    if (!phone) newErrors.phone = "Phone number is required.";
+    if (!password) newErrors.password = "Password is required.";
+    if (!location) newErrors.location = "Location is required.";
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      if (email === "admin@example.com") {
+        navigation.navigate("Sellerdetail");
+        navigation.navigate("ProductHeader");
+      } else {
+        Toast.show({
+          type: "success",
+          position: "top",
+          text1: "Success",
+          text2: "Login successful!",
+          visibilityTime: 3000,
+          autoHide: true,
+          bottomOffset: 40,
+          style: { backgroundColor: "#4caf50" }, // Fixed gradient issue
+        });
+      }
+      setErrors({});
+      setIsSubmitting(false);
+    } else {
+      Toast.show({
+        type: "error",
+        position: "top",
+        text1: "Error",
+        text2: "Please fill all required fields.",
+        visibilityTime: 3000,
+        autoHide: true,
+        bottomOffset: 40,
+        style: { backgroundColor: "#f44336" },
+      });
+      setIsSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    handleLocationRequest();
+  }, []);
+
+  const isFormValid = email && phone && password && location;
+
   return (
     <View style={styles.container}>
-      <Image source={logo} style={styles.logo} />
+      <Image source={{ uri: logo }} style={styles.logo} />
       <Text style={styles.header}>
         Organic Products Deliver At your doorsteps
       </Text>
@@ -34,48 +126,74 @@ const Login = ({ navigation }) => {
           placeholder="Email ID"
           style={styles.input}
           keyboardType="email-address"
+          onChangeText={setEmail}
+          value={email}
         />
       </View>
+      {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+
       <View style={styles.inputContainer}>
         <Icon name="phone" size={20} color="blue" style={styles.icon} />
         <TextInput
           placeholder="Mobile Number"
           style={styles.input}
           keyboardType="phone-pad"
+          onChangeText={setPhone}
+          value={phone}
         />
       </View>
+      {errors.phone && <Text style={styles.errorText}>{errors.phone}</Text>}
+
       <View style={styles.inputContainer}>
         <Icon name="lock" size={20} color="black" style={styles.icon} />
         <TextInput
           placeholder="Password"
           style={styles.input}
           secureTextEntry={true}
+          onChangeText={setPassword}
+          value={password}
         />
       </View>
+      {errors.password && (
+        <Text style={styles.errorText}>{errors.password}</Text>
+      )}
+
       <View style={styles.inputContainer}>
         <Icon name="map-marker" size={20} color="red" style={styles.icon} />
         <TextInput
-          placeholder="Pincode"
-          style={styles.input}
-          onChangeText={(value) => SetName(value)}
-          keyboardType="number-pad"
+          placeholder="Location (Auto-filled)"
+          style={[styles.input, styles.readOnlyInput]}
+          value={location}
+          editable={false}
         />
       </View>
+      {errors.location && (
+        <Text style={styles.errorText}>{errors.location}</Text>
+      )}
+
       <Text style={[styles.loginMethodText, { color: colors[colorIndex] }]}>
         Choose your login method
       </Text>
       <View style={styles.buttonrow}>
         <TouchableOpacity
-          style={styles.button}
+          style={[
+            styles.button,
+            { opacity: isSubmitting || !isFormValid ? 0.5 : 1 },
+          ]}
           onPress={() => navigation.navigate("ProductHeader")}
+          disabled={isSubmitting || !isFormValid}
         >
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={styles.buttonText}>login as user</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.button}
+          style={[
+            styles.button,
+            // { opacity: isSubmitting || !isFormValid ? 0.6 : 1 },
+          ]}
           onPress={() => navigation.navigate("Sellerdetail")}
+          // disabled={isSubmitting || !isFormValid}
         >
-          <Text style={styles.buttonText}>admin</Text>
+          <Text style={styles.buttonText}>Admin</Text>
         </TouchableOpacity>
       </View>
       <View>
@@ -88,6 +206,7 @@ const Login = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
+      <Toast />
     </View>
   );
 };
@@ -124,6 +243,10 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 40,
+  },
+  readOnlyInput: {
+    backgroundColor: "#f0f0f0",
+    color: "#666",
   },
   buttonrow: {
     flexDirection: "row",
@@ -162,5 +285,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     fontWeight: "900",
   },
+  errorText: {
+    color: "#f44336",
+    fontSize: 14,
+    textAlign: "left",
+    marginLeft: "10%",
+    marginTop: -10,
+    marginBottom: 10,
+  },
 });
+
 export default Login;

@@ -11,10 +11,10 @@ import {
   useFonts,
   JosefinSans_400Regular,
 } from "@expo-google-fonts/josefin-sans";
-import logo from "../../ecommerce/assets/logo.png";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { Asset } from "expo-asset";
 const OrderHistory = () => {
+  const logo = Asset.fromModule(require("../assets/logo.png"));
   const [orderHistory, setOrderHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   let [fontsLoaded] = useFonts({ JosefinSans_400Regular });
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   orderNumber: {
-
     fontSize: 16,
     fontWeight: "300",
     marginBottom: 10,
@@ -105,14 +104,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   productName: {
-    fontFamily:'JosefinSans_400Regular',
-    fontWeight:'800',
+    fontFamily: "JosefinSans_400Regular",
+    fontWeight: "800",
     fontSize: 14,
     flex: 1,
   },
   productPrice: {
-    fontFamily:'JosefinSans_400Regular',
-    fontWeight:'600',
+    fontFamily: "JosefinSans_400Regular",
+    fontWeight: "600",
     fontSize: 14,
     color: "green",
   },

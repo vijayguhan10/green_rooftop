@@ -1,15 +1,16 @@
-// cartReducer.js
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import action from "./actions";
+
 const initialState = {
   cart: [],
+  receivedItems: [],
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
       const newCart = [...state.cart, action.payload];
-      AsyncStorage.setItem("cart", JSON.stringify(newCart)); 
+      AsyncStorage.setItem("cart", JSON.stringify(newCart));
       return {
         ...state,
         cart: newCart,
@@ -18,7 +19,7 @@ const cartReducer = (state = initialState, action) => {
       const updatedCart = state.cart.filter(
         (_, index) => index !== action.payload
       );
-      AsyncStorage.setItem("cart", JSON.stringify(updatedCart)); // Update AsyncStorage
+      AsyncStorage.setItem("cart", JSON.stringify(updatedCart));
       return {
         ...state,
         cart: updatedCart,
@@ -28,6 +29,17 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [],
+      };
+    case "RECEIVE_ITEM":
+      const itemToReceive = action.payload;
+      const newReceivedItems = [...state.receivedItems, itemToReceive];
+
+      console.log("Received item:", itemToReceive);
+      console.log("Updated receivedItems:", newReceivedItems);
+
+      return {
+        ...state,
+        receivedItems: newReceivedItems,
       };
     default:
       return state;

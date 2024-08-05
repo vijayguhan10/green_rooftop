@@ -2,9 +2,13 @@ import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
-import logo from "../Asset/logo.png";
+import { Asset } from 'expo-asset';
+
+const logo = Asset.fromModule(require("../Asset/logo.jpg")).uri;
+
 const Header = ({ name }) => {
   const navigation = useNavigation();
+
   const handlePress = () => {
     if (name) {
       navigation.navigate(name);
@@ -16,7 +20,7 @@ const Header = ({ name }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={logo} style={styles.logo} />
+        <Image source={{ uri: logo }} style={styles.logo} />
         <FontAwesome
           name="user"
           size={40}

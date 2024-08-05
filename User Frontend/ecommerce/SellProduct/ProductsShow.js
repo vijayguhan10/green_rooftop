@@ -10,6 +10,7 @@ import {
 import productsData from "../../data/db.json";
 import Fuse from "fuse.js";
 import { useNavigation } from "@react-navigation/native";
+import * as Animatable from "react-native-animatable";
 
 const ProductsShow = ({ searchTerm }) => {
   const [products, setProducts] = useState([]);
@@ -46,10 +47,17 @@ const ProductsShow = ({ searchTerm }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {error && <Text style={styles.errorText}>{error}</Text>}
-      {filteredProducts.map((product) => (
-        <View key={product.id} style={styles.productContainer}>
+      {filteredProducts.map((product, index) => (
+        <Animatable.View
+          key={product.id}
+          style={styles.productContainer}
+          animation="slideInLeft"
+          delay={index * 100}
+          duration={500}
+        >
           <Image source={{ uri: product.image }} style={styles.image} />
           <View style={styles.BackgroundColors}>
+            
             <View style={styles.TextDisplay}>
               <Text style={styles.texts}>{product.name}</Text>
               <Text style={styles.Ruppes}>₹ {product.price}</Text>
@@ -64,7 +72,7 @@ const ProductsShow = ({ searchTerm }) => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </Animatable.View>
       ))}
     </ScrollView>
   );
@@ -78,13 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 20,
     padding: 10,
-    // backgroundColor: "#f9f9f9",
-    // borderRadius: 10,
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 4,
-    // elevation: 3,
   },
   BackgroundColors: {
     width: 195,

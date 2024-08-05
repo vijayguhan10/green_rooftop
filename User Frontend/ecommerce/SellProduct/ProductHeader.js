@@ -10,8 +10,8 @@ import {
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // import logo from "../../ecommerce/assets/logo.png";
 import ProductsShow from "./ProductsShow";
-import Header from './../../../Common/Header';
-import Footer from './../../../Common/Footer';
+import Header from "./../../../Common/Header";
+import Footer from "./../../../Common/Footer";
 const ProductHeader = ({ navigation }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,7 +43,7 @@ const ProductHeader = ({ navigation }) => {
               name="shopping-cart"
               size={24}
               color="black"
-              onPress={() => navigation.navigate("Viewcart")}
+              onPress={() => navigation.navigate("ViewCart")}
             />
           </TouchableOpacity>
         </View>

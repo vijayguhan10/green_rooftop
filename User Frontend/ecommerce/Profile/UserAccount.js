@@ -4,8 +4,10 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import menu from "../../ecommerce/assets/menu.png";
 import logo from "../../ecommerce/assets/logo.png";
 import { useNavigation } from "@react-navigation/native";
-
+import { Asset } from "expo-asset";
 const UserAccount = () => {
+  const logo = Asset.fromModule(require("../assets/logo.png"));
+  const menu = Asset.fromModule(require("../assets/menu.png"));
   const navigation = useNavigation();
   const handlePress = (action) => {
     console.log(action);
@@ -37,8 +39,8 @@ const UserAccount = () => {
           }}
         >
           <View style={styles.iconTextContainer}>
-            <FontAwesome name="gift" size={30} color="black" />
-            <Text style={styles.text}>Rewards</Text>
+            <FontAwesome name="location-arrow" size={30} color="black" />
+            <Text style={styles.text}>Track Order</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity

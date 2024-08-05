@@ -10,18 +10,18 @@ const Footer = () => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => navigation.navigate("Plant")}
+        onPress={() => navigation.navigate("TrackOrder")}
       >
         <Image
           source={{
-            uri: "https://static.thenounproject.com/png/1971282-200.png",
+            uri: "https://www.kindpng.com/picc/m/33-336582_order-tracking-track-order-icon-png-transparent-png.png",
           }}
           style={styles.icon}
         />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => navigation.navigate("Shop")}
+        onPress={() => navigation.navigate("ProductHeader")}
       >
         <Image
           source={{
@@ -32,7 +32,7 @@ const Footer = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.iconContainer}
-        onPress={() => navigation.navigate("Trolley")}
+        onPress={() => navigation.navigate("OrderHistory")}
       >
         <Image
           source={{

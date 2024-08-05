@@ -8,13 +8,12 @@ import {
 } from "react-native";
 import { useFonts, LilitaOne_400Regular } from "@expo-google-fonts/lilita-one";
 import { Gruppo_400Regular } from "@expo-google-fonts/gruppo";
-import Header from "../../../Common/Header";
+import Header from "../../Common/Header";
 import { FontAwesome } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
-import { receiveItem } from "../../../redux/actions";
 import Toast from "react-native-toast-message";
 
-const ViewOrderDetails = ({ route }) => {
+const ViewCustomerDetail = ({ route }) => {
   const { elem } = route.params;
   const dispatch = useDispatch();
   const [fontsLoaded] = useFonts({
@@ -31,7 +30,6 @@ const ViewOrderDetails = ({ route }) => {
   }
 
   const handleReceive = () => {
-    dispatch(receiveItem(elem));
     Toast.show({
       type: "success",
       position: "top",
@@ -49,7 +47,7 @@ const ViewOrderDetails = ({ route }) => {
       <Header />
       <View style={styles.border} />
       <View style={styles.textworkign}>
-        <Text style={styles.text}>Details of Customers</Text>
+        <Text style={styles.text}>Details of Customers to deliver</Text>
       </View>
       <View style={styles.textfororderContainer}>
         <Text
@@ -109,7 +107,7 @@ const ViewOrderDetails = ({ route }) => {
         style={[styles.recievedlocation, { backgroundColor: "#E5EDE6" }]}
         onPress={handleReceive}
       >
-        <Text style={[styles.recievedtext, { color: "black" }]}>Received</Text>
+        <Text style={[styles.recievedtext, { color: "black" }]}>order delivered</Text>
       </TouchableOpacity>
       <Toast />
     </View>
@@ -212,4 +210,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ViewOrderDetails;
+export default ViewCustomerDetail;

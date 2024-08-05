@@ -9,15 +9,16 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useFonts, KronaOne_400Regular } from "@expo-google-fonts/krona-one";
-import logo from "../../../Asset/logo.png";
+import logo from "../../../Asset/logo.jpg";
 import { useDispatch } from "react-redux";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 import { addToCart } from "./../../../redux/actions";
 import Footer from "./../../../Common/Footer";
-
+import { Asset } from "expo-asset";
 const ViewProduct = ({ route }) => {
+  const logo = Asset.fromModule(require("../assets/logo.png"));
   const navigation = useNavigation();
   const { product } = route.params;
   const [amount, setAmount] = useState("");

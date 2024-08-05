@@ -8,7 +8,10 @@
     "pincode": "600017",
     "address": "No. 12, 3rd Street, T. Nagar",
     "landmark": "Near Panagal Park",
-    "location_url": "https://maps.example.com/?q=12,3rd+Street,T.+Nagar,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=12,3rd+Street,T.+Nagar,Tamil+Nadu",
+    "product": "Brinjal",
+    "amount": "₹150",
+    "quantity": "2Kg"
   },
   {
     "id": 2,
@@ -19,7 +22,10 @@
     "pincode": "600020",
     "address": "No. 45, 2nd Avenue, Adyar",
     "landmark": "Near Nageswara Rao Park",
-    "location_url": "https://maps.example.com/?q=45,2nd+Avenue,Adyar,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=45,2nd+Avenue,Adyar,Tamil+Nadu",
+    "product": "Tomato",
+    "amount": "₹230",
+    "quantity": "4Kg"
   },
   {
     "id": 3,
@@ -30,7 +36,10 @@
     "pincode": "600042",
     "address": "No. 78, 1st Floor, Velachery",
     "landmark": "Near Vijaya Hospital",
-    "location_url": "https://maps.example.com/?q=78,1st+Floor,Velachery,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=78,1st+Floor,Velachery,Tamil+Nadu",
+    "product": "Cabbage",
+    "amount": "₹120",
+    "quantity": "3Kg"
   },
   {
     "id": 4,
@@ -41,7 +50,10 @@
     "pincode": "600080",
     "address": "No. 56, East Road, Korattur",
     "landmark": "Near Korattur Railway Station",
-    "location_url": "https://maps.example.com/?q=56,East+Road,Korattur,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=56,East+Road,Korattur,Tamil+Nadu",
+    "product": "Drumstick",
+    "amount": "₹180",
+    "quantity": "1Kg"
   },
   {
     "id": 5,
@@ -52,7 +64,10 @@
     "pincode": "600116",
     "address": "No. 89, Arumbakkam Road, Porur",
     "landmark": "Near Ramachandra Medical College",
-    "location_url": "https://maps.example.com/?q=89,Arumbakkam+Road,Porur,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=89,Arumbakkam+Road,Porur,Tamil+Nadu",
+    "product": "Pumpkin",
+    "amount": "₹200",
+    "quantity": "5Kg"
   },
   {
     "id": 6,
@@ -63,7 +78,10 @@
     "pincode": "600034",
     "address": "No. 34, 4th Street, Nungambakkam",
     "landmark": "Near Chetpet Railway Station",
-    "location_url": "https://maps.example.com/?q=34,4th+Street,Nungambakkam,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=34,4th+Street,Nungambakkam,Tamil+Nadu",
+    "product": "Carrot",
+    "amount": "₹140",
+    "quantity": "3Kg"
   },
   {
     "id": 7,
@@ -74,7 +92,10 @@
     "pincode": "600100",
     "address": "No. 91, 5th Main Road, Pallikaranai",
     "landmark": "Near Karapakkam",
-    "location_url": "https://maps.example.com/?q=91,5th+Main+Road,Pallikaranai,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=91,5th+Main+Road,Pallikaranai,Tamil+Nadu",
+    "product": "Beans",
+    "amount": "₹170",
+    "quantity": "2Kg"
   },
   {
     "id": 8,
@@ -85,7 +106,10 @@
     "pincode": "600094",
     "address": "No. 22, North Usman Road, Choolaimedu",
     "landmark": "Near Choolaimedu Bus Stop",
-    "location_url": "https://maps.example.com/?q=22,North+Usman+Road,Choolaimedu,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=22,North+Usman+Road,Choolaimedu,Tamil+Nadu",
+    "product": "Ridge Gourd",
+    "amount": "₹110",
+    "quantity": "2Kg"
   },
   {
     "id": 9,
@@ -96,7 +120,10 @@
     "pincode": "600004",
     "address": "No. 67, South Mada Street, Mylapore",
     "landmark": "Near Kapaleeshwarar Temple",
-    "location_url": "https://maps.example.com/?q=67,South+Mada+Street,Mylapore,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=67,South+Mada+Street,Mylapore,Tamil+Nadu",
+    "product": "Brinjal",
+    "amount": "₹150",
+    "quantity": "2Kg"
   },
   {
     "id": 10,
@@ -107,7 +134,10 @@
     "pincode": "600006",
     "address": "No. 103, Mount Road",
     "landmark": "Near The Park Hotel",
-    "location_url": "https://maps.example.com/?q=103,Mount+Road,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=103,Mount+Road,Tamil+Nadu",
+    "product": "Cauliflower",
+    "amount": "₹120",
+    "quantity": "1Kg"
   },
   {
     "id": 11,
@@ -118,6 +148,9 @@
     "pincode": "600113",
     "address": "No. 45, 7th Floor, Tidel Park",
     "landmark": "Near IIT Madras",
-    "location_url": "https://maps.example.com/?q=45,7th+Floor,Tidel+Park,Tamil+Nadu"
+    "location_url": "https://maps.example.com/?q=45,7th+Floor,Tidel+Park,Tamil+Nadu",
+    "product": "Cucumber",
+    "amount": "₹90",
+    "quantity": "3Kg"
   }
 ]

@@ -60,7 +60,7 @@ const ViewCart = () => {
   }
   return (
     <View style={styles.container}>
-      <Header name="Sellerdetail" />
+      <Header name="UserAccount" />
       <View styles={styles.border} />
       <View style={styles.summary}>
         <TouchableOpacity
